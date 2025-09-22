@@ -1,0 +1,10 @@
+project_id = "rygosxqfureajtqjgquj"
+
+[functions.gnosis-auth]
+verify_jwt = false
+
+[functions.gnosis-kyc]
+verify_jwt = false
+
+[functions.api-quote-sdk]
+verify_jwt = false

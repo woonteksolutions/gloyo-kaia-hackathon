@@ -1,0 +1,235 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* DappPortal z-index compliance - SDK uses 9999999, keep app modals below */
+.modal-overlay,
+.dialog-overlay,
+.popover-content,
+.dropdown-content,
+.tooltip-content {
+  z-index: 9999998 !important;
+}
+
+/* Ensure DappPortal SDK compatibility */
+.dappportal-modal {
+  z-index: 9999999;
+}
+
+/* Mobile-First Banking App Design System */
+
+@layer base {
+  :root {
+    --background: 0 0% 98%;
+    --foreground: 220 13% 18%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 13% 18%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 13% 18%;
+
+    /* Gloyo Pay Brand Colors - Mobile-Optimized */
+    --primary: 220 91% 60%; /* Rich Blue #4472E8 */
+    --primary-foreground: 0 0% 100%;
+    --primary-muted: 220 91% 96%;
+    --primary-hover: 220 91% 55%;
+    --primary-light: 220 91% 85%;
+
+    --secondary: 220 13% 96%;
+    --secondary-foreground: 220 13% 18%;
+
+    --muted: 220 13% 96%;
+    --muted-foreground: 220 13% 45%;
+
+    --accent: 220 50% 95%;
+    --accent-foreground: 220 13% 18%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
+
+    --border: 220 13% 90%;
+    --input: 220 13% 90%;
+    --ring: 220 91% 60%;
+
+    --radius: 0.75rem;
+
+    /* Mobile App Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(220 91% 60%), hsl(220 91% 55%));
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%), hsl(220 20% 98%));
+    --gradient-hero: linear-gradient(135deg, hsl(220 91% 60%), hsl(220 91% 70%));
+    --gradient-surface: linear-gradient(180deg, hsl(0 0% 98%), hsl(220 13% 97%));
+
+    /* Mobile Shadows */
+    --shadow-card: 0 2px 16px -4px hsl(220 13% 18% / 0.08);
+    --shadow-elevated: 0 8px 32px -8px hsl(220 13% 18% / 0.12);
+    --shadow-button: 0 2px 8px hsl(220 13% 18% / 0.1);
+    --shadow-soft: 0 1px 3px hsl(220 13% 18% / 0.05);
+
+    /* Touch-friendly spacing */
+    --touch-target: 44px;
+    --spacing-mobile: 1rem;
+    --spacing-section: 1.5rem;
+
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 220 13% 18%;
+    --sidebar-primary: 220 91% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 13% 95%;
+    --sidebar-accent-foreground: 220 13% 18%;
+    --sidebar-border: 220 13% 90%;
+    --sidebar-ring: 220 91% 60%;
+  }
+
+  .dark {
+    --background: 220 13% 9%;
+    --foreground: 0 0% 95%;
+
+    --card: 220 13% 11%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 220 13% 11%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 220 91% 65%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 13% 15%;
+    --secondary-foreground: 0 0% 95%;
+
+    --muted: 220 13% 15%;
+    --muted-foreground: 220 13% 65%;
+
+    --accent: 220 13% 15%;
+    --accent-foreground: 0 0% 95%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 13% 18%;
+    --input: 220 13% 18%;
+    --ring: 220 91% 65%;
+    
+    --sidebar-background: 220 13% 9%;
+    --sidebar-foreground: 0 0% 95%;
+    --sidebar-primary: 220 91% 65%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 13% 15%;
+    --sidebar-accent-foreground: 0 0% 95%;
+    --sidebar-border: 220 13% 18%;
+    --sidebar-ring: 220 91% 65%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  /* Mobile-first typography */
+  h1 { @apply text-2xl md:text-3xl font-bold tracking-tight; }
+  h2 { @apply text-xl md:text-2xl font-semibold tracking-tight; }
+  h3 { @apply text-lg md:text-xl font-semibold tracking-tight; }
+  
+  /* Page Layout Patterns */
+  .mobile-page {
+    @apply min-h-screen bg-gradient-to-br from-background to-primary/5 flex justify-center;
+  }
+  
+  .mobile-container {
+    @apply w-full max-w-md bg-background min-h-screen mx-auto px-4;
+  }
+  
+  .mobile-header {
+    @apply sticky top-0 z-10 bg-card/95 backdrop-blur-sm border-b px-2 py-4;
+  }
+  
+  .mobile-content {
+    @apply px-2 pt-6 pb-8 space-y-6 fade-in;
+  }
+  
+  .mobile-section {
+    @apply px-2 pb-6 space-y-6 fade-in;
+  }
+  
+  /* Touch-friendly interactive elements */
+  .mobile-button {
+    @apply min-h-[44px] px-6 py-3 rounded-xl font-medium transition-all duration-200;
+    @apply shadow-[var(--shadow-button)] active:scale-[0.98];
+  }
+  
+  .mobile-card {
+    @apply rounded-2xl border-0 shadow-[var(--shadow-card)] bg-card p-6;
+    @apply transition-all duration-200 hover:shadow-[var(--shadow-elevated)];
+  }
+  
+  .mobile-input {
+    @apply h-12 px-4 rounded-xl border-border bg-background;
+    @apply text-base focus:ring-2 focus:ring-primary/20 transition-colors;
+  }
+  
+  /* Status Indicators */
+  .status-success {
+    @apply bg-success/10 text-success border-success/20;
+  }
+  
+  .status-warning {
+    @apply bg-warning/10 text-warning border-warning/20;
+  }
+  
+  .status-error {
+    @apply bg-destructive/10 text-destructive border-destructive/20;
+  }
+  
+  .status-pending {
+    @apply bg-primary/10 text-primary border-primary/20;
+  }
+  
+  /* Icon Containers */
+  .mobile-icon-primary {
+    @apply w-16 h-16 bg-gradient-to-br from-primary to-primary-light rounded-2xl flex items-center justify-center shadow-mobile-card;
+  }
+  
+  .mobile-icon-secondary {
+    @apply w-12 h-12 bg-muted/50 rounded-2xl flex items-center justify-center;
+  }
+
+  /* Safe area handling for mobile devices */
+  .mobile-safe {
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+  }
+  
+  /* Mobile page transitions */
+  .page-transition {
+    @apply transition-all duration-300 ease-out;
+  }
+  
+  .fade-in {
+    animation: fadeInUp 0.4s ease-out;
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
